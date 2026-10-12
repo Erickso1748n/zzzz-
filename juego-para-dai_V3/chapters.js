@@ -1,0 +1,53 @@
+/* Capítulos 2 (camión RTP), 3 (La Villa) y 5 (Nuestras cositas) */
+const T=(w,h)=>`<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" fill="#fff" fill-opacity=".001"/>`;
+const PL=()=>S.pl||(S.pl=[]);
+const MI=svgImg('assets/characters/mila.png',-13,-31,26,42);
+const TO=svgImg('assets/characters/tomi.png',-13,-31,26,42);
+const UN=svgImg('assets/characters/perro.png',-15,-31,30,42);
+const bus=(x,y,c,t,fs)=>`<g transform="translate(${x} ${y})"><rect width="132" height="66" rx="9" fill="${c}"/><rect y="40" width="132" height="8" fill="#fff4e0"/>${[0,1,2,3,4].map(i=>`<rect x="${10+i*22}" y="16" width="17" height="20" rx="3" fill="#bfe6ff"/>`).join('')}<rect x="8" y="-2" width="116" height="15" rx="3" fill="#1b1b2a"/><text x="66" y="9" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="${fs}" fill="#ffb84d">${t}</text><text x="66" y="59" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#fff">RTP</text><circle cx="28" cy="68" r="9" fill="#222"/><circle cx="104" cy="68" r="9" fill="#222"/><circle cx="28" cy="68" r="4" fill="#aaa"/><circle cx="104" cy="68" r="4" fill="#aaa"/></g>`;
+Object.assign(M,{m7:['El camino para vernos','','Un boleto arrugado, camiones y mil mariposas. El viaje más largo para el encuentro más esperado.'],
+m8:['Nervios bonitos','','Mensajes en el camino: «ya casi llego». Los dos igual de nerviosos.'],
+m9:['La Villa','','Por fin en persona: sonrisas torpes, un abrazo y la sensación de que ya no era solo una pantalla.'],
+m10:['Tortas Balderas','','Una torta compartida y los nervios se fueron a mordidas.'],
+m11:['Mila, Tomi y compañía','','Mila, una Ternurín koala con moño; Tomi, un Ternurín gatito de overol azul; un burrito y un perrito con traje de unicornio. Cada quien en su lugar.'],
+m12:['Tus gustos','','Espagueti verde con queso, helado de Oreo, Monster de mango y tu música bajito. Eso también es hogar.']});
+Object.assign(GOAL,{bus:[2,['m7','m8'],'Dos recuerdos del camino. Siguiente parada: La Villa 💙'],villa:[3,['m9','m10'],'Por fin se vieron en persona. Otra página del libro se ilumina 💙'],casa5:[5,['m11','m12'],'Tu pequeño mundo está completo. Falta un último lugar… el sueño 🏡']});
+C[1][3]='bus';C[2][3]='villa';C[4][3]='casa5';
+SC.bus={t:'Cap. 2 · El camión RTP',c:'#3b3b52',gy:262,
+art:()=>`<defs><linearGradient id="sb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6f6fc8"/><stop offset="1" stop-color="#ffb08a"/></linearGradient></defs><rect width="400" height="300" fill="url(#sb)"/>${[[0,70,50,120],[52,95,44,95],[240,60,40,130]].map(b=>`<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}" fill="#3a3f7a"/>`).join('')}
+<rect x="306" y="100" width="94" height="96" fill="#fff4e0"/><rect x="302" y="90" width="102" height="12" fill="#e8484d"/><rect x="312" y="106" width="82" height="18" rx="4" fill="#1b1b2a"/><text x="353" y="119" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#ffd34d">Sushiburgers</text><rect x="316" y="132" width="34" height="64" fill="#ffd77a"/><rect x="358" y="132" width="30" height="40" fill="#bfe6ff"/>
+<rect y="196" width="400" height="104" fill="#3b3b52"/><rect y="190" width="400" height="10" fill="#cfc6d8"/><path d="M0 262H400" stroke="#ffd34d" stroke-width="3" stroke-dasharray="14 12" opacity=".6"/>${bus(8,150,'#3aa86b','ZAPATA–San Mateo',8.5)}${bus(160,150,'#46b37a','INDIOS VERDES',10)}
+<rect x="147" y="130" width="3" height="66" fill="#8d86a3"/><circle cx="148" cy="128" r="9" fill="#3e6bff"/><text x="148" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Arial">P</text>`,
+mk:()=>[sp(74,205,T(130,60),say2('«ZAPATA–San Mateo»… Ese camion me dice si ya va llegar Ericksote 🚌')),
+sp(226,205,T(130,60),say2('«INDIOS VERDES»… este trayecto me lo sé de memoria a su haus. 🏠')),
+sp(348,205,em('🍣🍔',20),say2('Sushiburgers… Que recuerdoos 👀')),
+sp(290,252,em('🎫'),()=>say([['n','Un boleto arrugado entre los asientos. Del día en que fuiste a verlo por primera vez.'],['d','Qué nervios tenía ese día… y qué emoción💙']],()=>gain('m7')),{m:'m7'}),
+sp(30,250,em('📱',28),()=>say([['p','Erick: Ya casi llego… ¿tú dónde vas? Estoy nerviosísimo JSJSJ']],()=>ask('d','¿Qué le contestas?',[['Yo tambieen y tengo nervioss',()=>say([['p','Erick: Entonces somos dos 💙']],()=>gain('m8'))],['Tranquilo, aliensote 👽 ai te voy',()=>say([['p','Erick: Okeiokei AJSAJK']],()=>gain('m8'))]])),{m:'m8'})],
+intro:()=>say([['n','Recuerdos.'],['d','Cual camion tomare...']],hint)};
+function villaE(){say([['e','H-hola… ¡Dai! Perdón, se me olvidó todo lo que iba a decir JSAKJA pero que gusto conocerte en persona.'],['d','Hola, Erick… esto se siente raro, pero m-muy pro.']],()=>ask('d','¿Qué haces?',[['Darle un abrazo 🤗',()=>say([['e','OSTIAAA KJASKAJ teano'],['n','Un abrazo en La Villa. Nervios, risas y por fin el mismo lugar.']],()=>gain('m9'))],['Sonreír: «qué bueno verte»',()=>say([['e','Igual, miamor… digo, Dai… JKAJSKJA, se sonroja.'],['n','La primera sonrisa en persona. Nervios.']],()=>gain('m9'))]]))}
+SC.villa={t:'Cap. 3 · La Villa',c:'#ffe9c8',gy:262,
+art:()=>`<defs><linearGradient id="sv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc8ff"/><stop offset="1" stop-color="#ffe9c8"/></linearGradient></defs><rect width="400" height="300" fill="url(#sv)"/>
+<rect x="120" y="100" width="170" height="95" fill="#f3e8d4"/><path d="M150 100Q205 36 260 100Z" fill="#7aa7e8"/><rect x="203" y="22" width="4" height="16" fill="#fff4e0"/><rect x="198" y="27" width="14" height="4" fill="#fff4e0"/><rect x="96" y="120" width="26" height="75" fill="#f3e8d4"/><path d="M92 120L109 88L126 120Z" fill="#7aa7e8"/><rect x="288" y="120" width="26" height="75" fill="#f3e8d4"/><path d="M284 120L301 88L318 120Z" fill="#7aa7e8"/><rect x="190" y="150" width="30" height="45" rx="15" fill="#8a6aa8"/>${[140,250].map(x=>`<rect x="${x}" y="125" width="16" height="30" rx="8" fill="#7aa7e8"/>`).join('')}
+<rect y="195" width="400" height="105" fill="#e8dcc4"/><path d="M0 230H400M0 262H400" stroke="#d8caae" stroke-width="2"/><ellipse cx="62" cy="224" rx="34" ry="10" fill="#9fd0f5" stroke="#cfc6b0" stroke-width="4"/><rect x="58" y="198" width="8" height="26" fill="#cfc6b0"/><path d="M62 198Q50 188 44 202M62 198Q74 188 80 202" stroke="#cfe9ff" stroke-width="2" fill="none"/>
+<rect x="312" y="162" width="84" height="38" fill="#fff4e0"/>${[0,1,2,3,4,5].map(i=>`<rect x="${308+i*15}" y="150" width="15" height="16" fill="${i%2?'#fff':'#e8484d'}"/>`).join('')}<rect x="308" y="126" width="88" height="20" rx="4" fill="#c23b3b"/><text x="352" y="140" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff4e0">Tortas Balderas</text>`,
+mk:()=>[sp(60,214,em('⛲'),say2('Una fuente. Pedí un deseo y sera casarme algun dia con zote💦')),
+sp(120,250,em('🕊️'),say2('una paloma me miró como diciendo «ve con ese guapote» 😂')),
+sp(165,206,em('🕊️'),say2('Otra paloma dice «estos chavales tendran una historia muy pro»')),
+sp(350,212,em('🥪'),()=>say([['n','Tortas Balderas: una torta enorme para compartir.'],['e','¡Yo invito!.'],['d','Siiii lleva queso, kelikote🧀']],()=>gain('m10')),{m:'m10'}),
+sp(268,214,T(44,70),villaE,{m:'m9'})],
+intro:()=>{showE(300);say([['n','Ubicacion La Villa. Gente caminando, y Erick el chico que conociste, esta sudandole todo, más nervioso que tú.'],['d','Es él… respira, Dai  😳']],hint)}};
+function plsp(id,x,y,h,t){const o={x,y,h:`<g transform="translate(0 10) scale(1.5)">${h}</g>`,hide:PL().includes(id),fn:()=>{o.hide=1;PL().push(id);save();drawSpots();tone(880,.4);say([['d',t]],()=>PL().length==4?say([['n','¡Los cuatro están contigo! Llévalos a la repisa 🧸']],hint):hint())}};return o}
+function place(i=0){const Q=[['Mila','En la ventana, mirando las estrellas',['Dentro del refri','Debajo de la cama'],'Mila: ¡Qué vista! Mi moño brilla con la luna 🌙'],['Tomi','Junto a la guitarra, de corista',['En la maceta','Dentro del microondas'],'Tomi: ¡Perfecto! Con mi overol azul hago los coros 🎸'],['El burrito','En la cama, el más abrazado',['En el techo','En la regadera'],'El burrito ya está listo para los abrazos 🫏'],['El perrito unicornio','Entre los libros románticos',['Sobre el espagueti','En el baño'],'¡Un unicornio perritooo 📚']];
+if(i>3){say([['d','¡Todos en su lugar! Mi pequeña familia de peluches 🥹']],()=>gain('m11'));return}
+const q=Q[i],o=[[q[1],()=>say([['n',q[3]]],()=>place(i+1))],...q[2].map(w=>[w,()=>say([['n',q[0]+' te mira confundido… mejor en otro lugar 😅']],()=>place(i))])];if(i%2)o.reverse();ask('n','¿Dónde sientas a '+q[0]+'?',o)}
+SC.casa5={t:'Cap. 5 · Nuestras cositas',c:'#cfdcff',gy:262,
+art:()=>`<rect width="400" height="300" fill="#cfdcff"/><rect y="232" width="400" height="68" fill="#e0b88a"/><path d="M0 252H400M0 274H400" stroke="#c99f72" stroke-width="2"/><ellipse cx="200" cy="268" rx="150" ry="16" fill="#c7b8ff" opacity=".6"/>
+<rect x="250" y="44" width="90" height="80" rx="6" fill="#ffe9a8" stroke="#fff4e0" stroke-width="5"/><path d="M295 44V124M250 84H340" stroke="#fff4e0" stroke-width="3"/><circle cx="295" cy="84" r="70" fill="#ffd77a" opacity=".12"/>
+<rect x="40" y="126" width="150" height="8" rx="3" fill="#8a6aa8"/><rect x="52" y="134" width="5" height="12" fill="#8a6aa8"/><rect x="173" y="134" width="5" height="12" fill="#8a6aa8"/>${[0,1,2,3].map(i=>`<rect x="${150+i*9}" y="108" width="7" height="18" fill="${['#ff9ccf','#6f93ff','#ffd77a','#fff4e0'][i]}"/>`).join('')}
+<rect x="150" y="212" width="110" height="8" fill="#8a6aa8"/><rect x="156" y="220" width="6" height="30" fill="#8a6aa8"/><rect x="248" y="220" width="6" height="30" fill="#8a6aa8"/>`,
+mk:()=>[plsp('mila',58,244,MI,'¡Mila! Mi hija koala con su vestidito amarillo 🐨'),plsp('tomi',122,250,TO,'¡Tomi! Mi hijo gatito con su overol azul 🐱'),plsp('burro',300,248,em('🫏',28),'El burrito de peluche que Erick me regaló. LO ABRAZO 🫏'),plsp('uni',356,246,UN,'Un perrito café disfrazado de unicornio. Ostia 🦄'),
+sp(178,204,em('🍝'),say2('Buldak de queso con muchísimo queso.🧀')),
+sp(236,204,em('🍨'),say2('Helado de Oreo con una Monster de durazo al lado. Combo perfecto ')),
+sp(375,190,em('🎧'),()=>say([['n','Tu PlayList suena: Trueno, Milo J, Mon Laferte, C.R.O, Bardero$, Nicki Nicole, The Weeknd, Junior H, Kevin Kaarl y Tokio Hotel.'],['d','Oye siri, Música bajita, por favor… 😌']],()=>gain('m12')),{m:'m12'}),
+sp(115,108,em('🧸'),()=>PL().length<4?say([['d','Mi peluche de oso… todavía faltan algunos por encontrar 🧸']],hint):place())],
+intro:()=>say([['n','Tus cosas favoritas: hay musica, luz cálida y peluches escondidos por todos lados.'],['d','Mila y Tomi andan por aquí… ¡hay que encontrarlos! 🐨🐱']],hint)};
